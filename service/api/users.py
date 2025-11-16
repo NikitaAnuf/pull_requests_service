@@ -33,7 +33,7 @@ async def get_review(user_id: str):
                                       SELECT pr.pull_request_id, pr.pull_request_name, pr.author_id, pr.status
                                       FROM "user" u
                                       LEFT JOIN "assignment" a ON u.user_id = a.reviewer_id
-                                      JOIN pull_request pr ON a.pull_request_id = pr.pull_request_id
+                                      LEFT JOIN pull_request pr ON a.pull_request_id = pr.pull_request_id
                                       WHERE u.user_id = %(user_id)s
                               ''', {'user_id': user_id})
     if user_pull_requests is None:

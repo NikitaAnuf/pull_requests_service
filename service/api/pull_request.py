@@ -218,7 +218,7 @@ async def reassign_pull_request(pull_request_id: str = Body(...), old_user_id: s
             'author_id': pull_request_info['author_id'],
             'status': pull_request_info['status'],
             'assigned_reviewers': assigned_reviewers,
-            'createdAt': pull_request_info['created_at'].stftime(JSON_DATETIME_FORMAT),
-            'mergedAt': pull_request_info['merged_at'].stftime(JSON_DATETIME_FORMAT) if pull_request_info['merged_at'] is not None else None,
+            'createdAt': pull_request_info['created_at'].strftime(JSON_DATETIME_FORMAT),
+            'mergedAt': pull_request_info['merged_at'].strftime(JSON_DATETIME_FORMAT) if pull_request_info['merged_at'] is not None else None,
         },
         'replaced_by': reassign_candidate['user_id']})
